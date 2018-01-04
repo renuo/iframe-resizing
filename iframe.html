@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <script>
+    window.addEventListener('message', function(e) {
+      if (e.data === 'subscribe') {
+        e.source.postMessage(document.body.scrollHeight, e.origin);
+        window.addEventListener('turbolinks:load', function() {
+          e.source.postMessage(document.body.scrollHeight, e.origin);
+        });
+      }
+    }, false);
+    </script>
+  </head>
+  <body style="height: 450px;">iframe</body>
+</html>

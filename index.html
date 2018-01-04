@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <script>
+    function iframeLoad(ifr) {
+      window.addEventListener("message", function(e) {
+        if (ifr.src.indexOf(e.origin) === 0) { ifr.height = e.data; }
+      }, false);
+      ifr.contentWindow.postMessage('subscribe', ifr.src);
+    }
+    </script>
+  </head>
+  <body>
+    Main
+    <iframe src="iframe.html" onload="iframeLoad(this)"/>
+  </body>
+</html>
